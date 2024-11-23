@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找工作 - 高级人才招聘平台</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>        body {
+        font-family: 'Arial', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        padding: 20px 0;
+        position: relative;
+    }
+    .header h1 {
+        font-size: 36px;
+        margin: 0;
+    }
+    .header p {
+        font-size: 18px;
+        margin: 10px 0 0;
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        z-index: 1000;
+        padding: 10px 0;
+    }
+    .menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .menu li {
+        margin-left: 20px;
+    }
+    .menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    .menu a:hover {
+        text-decoration: underline;
+    }
+    .content {
+        margin-top: 60px; /* 确保内容不会被固定菜单遮挡 */
+    }
+    .search-container {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #jobSearchForm {
+        display: flex;
+        align-items: center;
+        width: 100%; /* 占满整个容器宽度 */
+    }
+
+    #jobSearchForm select{
+        flex: 1;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    #jobSearchForm input{
+        flex: 3;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    #jobSearchForm button {
+        flex: 1;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    #jobSearchForm select {
+        flex: 1; /* 下拉框占1份 */
+    }
+
+    #jobSearchForm input {
+        flex: 2; /* 输入框占2份 */
+    }
+
+    #jobSearchForm button {
+        flex: 1; /* 按钮占1份 */
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    #jobSearchForm button:hover {
+        background-color: #0056b3;
+    }
+
+    .job-list {
+        margin-top: 30px;
+    }
+    .job-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    .job-card h3 {
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+    .job-card p {
+        font-size: 16px;
+        margin: 0 0 10px;
+    }
+    .job-card a {
+        color: #6a11cb;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .job-card a:hover {
+        text-decoration: underline;
+    }
+    .menu .modify-position {
+        font-size: 0.8em; /* 调整字体大小 */
+        color: white; /* 设置字体颜色为白色 */
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="menu">
+        <ul>
+            <li><a href="#">当前定位：** <span class="modify-position">[修改定位]</span></a></li>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">职位搜索</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">联系我们</a></li>
+            <li><a href="#">行业动态</a></li>
+            <li><a href="#">职业发展</a></li>
+            <li><a href="#">人才社区</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="header text-center">
+            <h1>高级人才招聘平台</h1>
+            <p>找到您的理想工作，开启职业生涯新篇章</p>
+        </div>
+
+        <div class="search-container">
+            <form id="jobSearchForm">
+                <select name="category" id="categorySelect">
+                    <option value="city">意向城市</option>
+                    <option value="company">公司</option>
+                    <option value="position">职位</option>
+                </select>
+                <input type="text" name="keyword" placeholder="寻找意向城市，公司，职位" required style="flex: 3;">
+                <button type="button" onclick="searchJobs()">搜索</button>
+            </form>
+        </div>
+
+
+
+        <div class="job-list row">
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>软件工程师</h3>
+                    <p>公司名称：XYZ科技有限公司</p>
+                    <p>地点：北京</p>
+                    <p>薪资：15K-25K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>产品经理</h3>
+                    <p>公司名称：ABC互联网公司</p>
+                    <p>地点：上海</p>
+                    <p>薪资：20K-30K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>数据分析师</h3>
+                    <p>公司名称：DEF大数据公司</p>
+                    <p>地点：深圳</p>
+                    <p>薪资：18K-28K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师2</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师3</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师4</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师5</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师6</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师7</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师8</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-card">
+                    <h3>UI设计师9</h3>
+                    <p>公司名称：GHI设计公司</p>
+                    <p>地点：广州</p>
+                    <p>薪资：16K-26K</p>
+                    <a href="#">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function searchJobs() {
+        const form = document.getElementById('jobSearchForm');
+        const keyword = form.querySelector('input[name="keyword"]').value;
+
+        if (keyword) {
+            window.location.href = `/jobs?keyword=${encodeURIComponent(keyword)}`;
+        } else {
+            alert('请输入关键词');
+        }
+    }
+</script>
+</body>
+</html>

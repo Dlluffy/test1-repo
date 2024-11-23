@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">注册页面</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            padding: 10px;
+            background: #6a11cb;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: #2575fc;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .register-link a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <p2 class="logo">boos直聘</p2>
+    <h2 th:text="${title}">注册</h2>
+    <form th:action="@{/register}" method="post">
+        <input type="text" id="username" name="username" placeholder="用户名" required>
+        <input type="password" id="password" name="password" placeholder="密码" required>
+        <input type="email" id="email" name="email" placeholder="电子邮件" required>
+        <input type="text" id="fullName" name="fullName" placeholder="全名" required>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="电话号码" required>
+        <input type="text" id="address" name="address" placeholder="地址" required>
+        <button type="submit">注册</button>
+    </form>
+    <div th:if="${successMessage}" class="message">
+        <p style="color: green; text-align: center;">[[${successMessage}]]</p>
+    </div>
+    <div th:if="${errorMessage}" class="message">
+        <p style="color: red; text-align: center;">[[${errorMessage}]]</p>
+    </div>
+    <div class="register-link">
+        <a href="/to_login">已有账号？去登录</a>
+    </div>
+</div>
+</body>
+</html>
